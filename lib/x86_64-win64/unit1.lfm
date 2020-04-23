@@ -1,0 +1,154 @@
+object Form1: TForm1
+  Left = 594
+  Height = 517
+  Top = 271
+  Width = 848
+  Caption = 'AndroidWhiteListTool'
+  ClientHeight = 517
+  ClientWidth = 848
+  OnCreate = FormCreate
+  LCLVersion = '2.0.2.0'
+  object ComboBox1: TComboBox
+    Left = 16
+    Height = 23
+    Top = 16
+    Width = 676
+    Anchors = [akTop, akLeft, akRight]
+    ItemHeight = 15
+    TabOrder = 0
+  end
+  object Button_ADB_Check4Devices: TButton
+    Left = 708
+    Height = 25
+    Top = 16
+    Width = 51
+    Anchors = [akTop, akRight]
+    Caption = 'Reload'
+    OnClick = Button_ADB_Check4DevicesClick
+    TabOrder = 1
+  end
+  object Button_Use_Device: TButton
+    Left = 772
+    Height = 25
+    Top = 16
+    Width = 64
+    Anchors = [akTop, akRight]
+    Caption = 'Use'
+    OnClick = Button_Use_DeviceClick
+    TabOrder = 2
+  end
+  object PageControl1: TPageControl
+    Left = 16
+    Height = 452
+    Top = 48
+    Width = 817
+    ActivePage = TabSheet_Start
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 0
+    TabOrder = 3
+    object TabSheet_Start: TTabSheet
+      Caption = 'TabSheet_Start'
+      ClientHeight = 424
+      ClientWidth = 809
+      object ListBox1: TListBox
+        Left = 16
+        Height = 392
+        Top = 16
+        Width = 540
+        ItemHeight = 0
+        TabOrder = 0
+      end
+    end
+    object TabSheet_Apps: TTabSheet
+      Caption = 'TabSheet_Apps'
+      ClientHeight = 424
+      ClientWidth = 809
+      object CheckListBox1: TCheckListBox
+        Left = 16
+        Height = 360
+        Top = 40
+        Width = 212
+        ItemHeight = 0
+        TabOrder = 0
+      end
+      object Label1: TLabel
+        Left = 16
+        Height = 15
+        Top = 16
+        Width = 40
+        Caption = 'App list'
+        ParentColor = False
+      end
+      object ValueListEditor1: TValueListEditor
+        Left = 280
+        Height = 360
+        Top = 40
+        Width = 304
+        FixedCols = 0
+        RowCount = 2
+        TabOrder = 1
+        ColWidths = (
+          64
+          219
+        )
+      end
+      object Button1: TButton
+        Left = 664
+        Height = 25
+        Top = 40
+        Width = 75
+        Caption = 'Button1'
+        TabOrder = 2
+      end
+      object Button2: TButton
+        Left = 664
+        Height = 25
+        Top = 88
+        Width = 75
+        Caption = 'Button2'
+        TabOrder = 3
+      end
+    end
+    object TabSheet_Ignore: TTabSheet
+      Caption = 'TabSheet_Ignore'
+      ClientHeight = 424
+      ClientWidth = 729
+      object Memo1: TMemo
+        Left = 32
+        Height = 322
+        Top = 48
+        Width = 168
+        Lines.Strings = (
+          'Memo1'
+        )
+        TabOrder = 0
+      end
+      object Label2: TLabel
+        Left = 416
+        Height = 15
+        Top = 24
+        Width = 60
+        Caption = 'Ignore Files'
+        ParentColor = False
+      end
+      object Memo2: TMemo
+        Left = 416
+        Height = 322
+        Top = 48
+        Width = 168
+        Lines.Strings = (
+          'Memo1'
+        )
+        TabOrder = 1
+      end
+      object Label3: TLabel
+        Left = 32
+        Height = 15
+        Top = 24
+        Width = 64
+        Caption = 'Ignore Apps'
+        ParentColor = False
+      end
+    end
+  end
+end
