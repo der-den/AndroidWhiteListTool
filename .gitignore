@@ -1,0 +1,4 @@
+
+*.exe
+platform-tools/AdbWinApi.dll
+platform-tools/AdbWinUsbApi.dll
