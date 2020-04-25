@@ -9,7 +9,6 @@ uses
   ComCtrls, ValEdit, ADB_Functions;
 
 type
-
   { TForm1 }
 
   TForm1 = class(TForm)
@@ -36,7 +35,7 @@ type
   private
 
   public
-
+    procedure FillLog(aText: string);
   end;
 
 var
@@ -56,6 +55,7 @@ procedure TForm1.Button_ADB_Check4DevicesClick(Sender: TObject);
 begin
   ComboBox1.Items.Clear;
   ComboBox1.Items.AddStrings( search.getDevices() );
+
 //   ListBox1.Items.Add('Check devices - Found: '+IntToStr(ComboBox1.Items.Count)+' ');
   if ( ComboBox1.Items.Count = 1 ) then begin ComboBox1.Text := ComboBox1.Items[0]; end;
 end;
@@ -78,10 +78,16 @@ begin
   search := TADB.Create(llAll);
   //ListBox1.Items := search.logList;
   search.assignLog(ListBox1.Items);
+  search.assignFillLog(@FillLog);
   search.setADBpathAndExe('platform-tools/adb.exe');
   search.getADBversion();
 
   PageControl1.ActivePage := TabSheet_Start;
+end;
+
+procedure TForm1.FillLog(aText: string);
+begin
+  ListBox1.Items.Add(aText);
 end;
 
 end.

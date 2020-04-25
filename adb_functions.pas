@@ -17,13 +17,16 @@ const
 
 
 type
+  TFillLog = procedure(aText: string)  of object;
+  { TADB }
 
-  TADB = class
+  TADB = class(tObject)
     private
       fLogList : TStringList;
       logState : integer;
       extLogList : TStrings;
       ADBready : boolean;
+      fFillLog : TFillLog;
 
       deviceActivated : boolean;
       transportID : String;
@@ -40,6 +43,8 @@ type
       property logList : TStringList read fLogList;
 
       procedure assignLog(l:TStrings);
+      procedure assignFillLog(func : TFillLog);
+      procedure LogExtern(Text : String);
 
       procedure setTransportID(tID:String);
       function getTransportID():String;
@@ -67,7 +72,6 @@ type
 
       function ADB_callAndSave(id,workDirAndFile, adbParams: string; forceNoCache: boolean = false):TStringList;
       function ADB_call(command:string):TStringList;
-
 
   end;
 
@@ -104,6 +108,17 @@ begin
    extLogList := l;
 end;
 
+procedure TADB.assignFillLog(func: TFillLog);
+begin
+  fFillLog := func;
+end;
+
+procedure TADB.LogExtern(Text: String);
+begin
+  if Assigned(fFillLog) then
+    fFillLog(Text);
+end;
+
 procedure TADB.log(s:string; level:integer);
 var logIt : boolean = false;
 begin
@@ -118,7 +133,8 @@ begin
   if (logIt) then
   begin
      fLogList.Add(s);
-     if Assigned(extLogList) then extLogList.Add(s);
+     LogExtern(s);
+
   end;
 end;
 
@@ -235,7 +251,7 @@ begin
 end;
 
 
-function TADB.getProp():TStringList;
+function TADB.getProp(): TStringlist;
 begin
    Result := ADB_call('shell getprop');
 end;
@@ -252,7 +268,7 @@ end;
 
 
 
-function TADB.downloadApk(app:string;targetPath:string):String;
+function TADB.downloadApk(app: string; targetpath: string): String;
 var
   f : file;
   a,b : TStringList;
