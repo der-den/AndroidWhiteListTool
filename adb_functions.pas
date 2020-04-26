@@ -237,17 +237,17 @@ var
   position : integer;
   i,c : integer;
 begin
+   DevList := TStringList.Create;
    if (ADBready) then
    begin
      R := ADB_call('devices -l');
-     DevList := TStringList.Create;
      position := R.IndexOf('List of devices attached');
      position := position+1;
      c := R.Count - 1 - position;
      if c>0 then for i := position to position+c-1 do DevList.Add(R[i]);
-     Result := DevList;
      log('Check devices - Found: '+IntToStr(DevList.Count),llInformation);
    end else log('getDevices: ADB not ready',llDebug);
+   Result := DevList;
 end;
 
 

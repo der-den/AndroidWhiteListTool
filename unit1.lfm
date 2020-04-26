@@ -89,7 +89,7 @@ object Form1: TForm1
         TabOrder = 1
         ColWidths = (
           64
-          236
+          219
         )
       end
       object Button1: TButton
